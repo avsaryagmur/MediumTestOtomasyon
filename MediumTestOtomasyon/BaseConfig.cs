@@ -9,8 +9,8 @@
             public static string InvalidUsername = "Otomasyon"; //geçersiz kullanıcı
             public static string InvalidPassword = "123456";
 
-            public static string ValidUsername = "Gerçerli Kullanıcı adı"; //geçerli kullanıcı bilgileri
-            public static string ValidPassword = "Geçerli Şifre";
+            public static string ValidUsername = "gecerlikullanici@gmail.com"; //geçerli kullanıcı bilgileri
+            public static string ValidPassword = "gercerlisifre";
 
             public static string EmptyUsername = " "; //boş girilme durumu için
             public static string EmptyPassword = " ";

@@ -15,7 +15,7 @@ namespace MediumTestOtomasyon
             IWebDriver driver = new ChromeDriver(options);
             driver.Navigate().GoToUrl(BaseConfig.MediumTestUrl); // Config sınıfında tanımlı URL kullanıldı.
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5); // 5sn bekleme konuldu.
-            driver.Manage().Window.Maximize(); //Chrome kranı maxiumum boyuta getirildi.
+            driver.Manage().Window.Maximize(); //Chrome ekranı maxiumum boyuta getirildi.
             return driver;
         }
 

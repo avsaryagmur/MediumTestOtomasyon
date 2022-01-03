@@ -23,4 +23,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="MediumProjectScenarios\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MediumProjectScenarios\" />
+  </ItemGroup>
 </Project>
