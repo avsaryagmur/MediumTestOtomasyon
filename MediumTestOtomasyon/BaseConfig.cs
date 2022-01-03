@@ -13,7 +13,7 @@
             public static string ValidPassword = "gercerlisifre";
 
             public static string EmptyUsername = " "; //boş girilme durumu için
-            public static string EmptyPassword = " ";
+            public static string EmptyPassword = "";
         }
     }
 }

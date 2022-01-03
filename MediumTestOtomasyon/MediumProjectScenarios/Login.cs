@@ -16,11 +16,8 @@ namespace MediumTestOtomasyon.MediumProjectScenarios
         {
             try
             {
-                IWebDriver driver = new ChromeDriver();
-                driver.Navigate().GoToUrl(BaseConfig.MediumTestUrl); // Config dosyasından test edeceğimiz sayfa URL'ine gidilir.
-                driver.Manage().Window.Maximize(); // Chrome sayfası full ekran yaptırıldı.
-
-                LoginPageUI = new LoginPageUIElements(driver); // UI elementlerini kullanabilmek için tanımlama yapıldı.
+                Driver = BaseActions.InitializedDriver(); // bu methot ile testler başlarken ilk çalıştırılır. Driver ve chrome ayağa kalkar.
+                LoginPageUI = new LoginPageUIElements(Driver); // UI elementlerini kullanabilmek için tanımlama yapıldı.
             }
             catch (Exception e)
             {
@@ -33,22 +30,16 @@ namespace MediumTestOtomasyon.MediumProjectScenarios
         [Fact]
         public void Login_ShouldReturnFail_WhenUserNull()
         {
-            LoginPageUI.Username.SendKeys(BaseConfig.Credentials.EmptyUsername);
-            LoginPageUI.Username.SendKeys(BaseConfig.Credentials.EmptyPassword);
-
-            LoginPageUI.LoginBtn.Click();
+            BaseActions.LoginWithTheUsernameAndPassword(Driver, BaseConfig.Credentials.EmptyUsername, BaseConfig.Credentials.EmptyPassword);
 
             Assert.Equal("Lütfen şifrenizi giriniz.", LoginPageUI.PleaseEnterPasswordInfo.Text); // Assert ile metin karşılaştırması yapılır.
-            Driver.Quit();
         }
 
         [Fact]
         public void Login_ShouldReturnFail_WhenUserInValid()
         {
-            LoginPageUI.Username.SendKeys(BaseConfig.Credentials.InvalidUsername);
-            LoginPageUI.Password.SendKeys(BaseConfig.Credentials.InvalidPassword);
+            BaseActions.LoginWithTheUsernameAndPassword(Driver, BaseConfig.Credentials.InvalidUsername, BaseConfig.Credentials.InvalidPassword);
 
-            LoginPageUI.LoginBtn.Click();
             Thread.Sleep(10000);
 
             Assert.True(LoginPageUI.InvalidUserInfo.Displayed); // Assert ile popup açıldı mı kontrol edilir.
@@ -59,10 +50,8 @@ namespace MediumTestOtomasyon.MediumProjectScenarios
         [Fact]
         public void Login_ShouldReturnSuccess_WhenUserValid()
         {
-            LoginPageUI.Username.SendKeys(BaseConfig.Credentials.ValidUsername);
-            LoginPageUI.Password.SendKeys(BaseConfig.Credentials.ValidPassword);
+            BaseActions.LoginWithTheUsernameAndPassword(Driver, BaseConfig.Credentials.ValidUsername, BaseConfig.Credentials.ValidPassword);
 
-            LoginPageUI.LoginBtn.Click();
             Thread.Sleep(10000);
 
             Assert.True(LoginPageUI.AfterLoginPopup.Displayed); //Assert ile login sonrası banabi,mahalle vb seçim yaptığımız popup kontrol edilir.

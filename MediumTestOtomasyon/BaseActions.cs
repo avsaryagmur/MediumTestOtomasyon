@@ -29,5 +29,7 @@ namespace MediumTestOtomasyon
             loginPage.LoginBtn.Click();
             Thread.Sleep(5000); // 5sn bekleme konuldu.
         }
+
+   
     }
 }
