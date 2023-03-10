@@ -12,7 +12,7 @@ namespace MediumTestOtomasyon.MediumProjectUIElements
         }
 
         [FindsBy(How = How.Id, Using = "UserName")] //hangi konum belirleyici ile bulunacağı belirtilir.
-        public IWebElement Username { get; set; } //username ismi ile senaryolardan çağrılabilecek.
+        public IWebElement Username { get; set; } //Username ismi ile senaryolardan çağrılabilecek.
 
         [FindsBy(How = How.Name, Using = "Password")]
         public IWebElement Password { get; set; }
@@ -35,6 +35,12 @@ namespace MediumTestOtomasyon.MediumProjectUIElements
 
         [FindsBy(How = How.XPath, Using = "//a[@href ='/sifremi-unuttum']")]
         public IWebElement ResetPassword { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "#login-form > div.form-group.has-error > div > small")] //Lütfen şifrenizi giriniz uyarısı
+        public IWebElement PleaseEnterPasswordInfo { get; set; }
+        [FindsBy(How = How.XPath, Using = "/html/body/div[9]")] //Hatalı kullanıcı uyarısı
+        public IWebElement InvalidUserInfo { get; set; }
 
+        [FindsBy(How = How.CssSelector, Using = @"body > div.ReactModalPortal > div > div")] //Login sonrası açılan mahalle,banabi seçim popup
+        public IWebElement AfterLoginPopup { get; set; }
     }
 }

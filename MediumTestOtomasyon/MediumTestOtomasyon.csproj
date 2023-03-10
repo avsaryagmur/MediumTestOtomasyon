@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+    <Configurations>Release;Debug</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -26,4 +27,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="MediumProjectScenarios\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MediumProjectScenarios\" />
+  </ItemGroup>
 </Project>

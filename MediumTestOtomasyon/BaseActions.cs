@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using System.IO;
 using System.Threading;
 
 namespace MediumTestOtomasyon
@@ -28,6 +29,19 @@ namespace MediumTestOtomasyon
             loginPage.Password.SendKeys(password);
             loginPage.LoginBtn.Click();
             Thread.Sleep(5000); // 5sn bekleme konuldu.
+        }
+
+        public static void CreateScreenShotDirectory()
+        {
+            if (!Directory.Exists(Config.OtomasyonScreenshotDirectory))
+            {
+                Directory.CreateDirectory(Config.OtomasyonScreenshotDirectory);
+            }
+        }
+        public static void TakeScreenshot(string screenshotFileName, IWebDriver driver)
+        {
+            Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+            screenshot.SaveAsFile(AppDomain.CurrentDomain.BaseDirectory + @"\OtomasyonScreenShots\" + screenshotFileName + ".png", ScreenshotImageFormat.Png);
         }
     }
 }
